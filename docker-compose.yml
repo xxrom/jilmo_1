@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  nikita-redis:
+    image: redis:4-alpine
+
+  nikita-backend_1:
+    build: ./backend/
+    depends_on:
+      - nikita-redis
+    links:
+      - nikita-redis
+    volumes:
+      - ./backend/src/:/usr/bin/backend/src/
+    ports:
+      - '4444:8082'
+    environment:
+      - REDIS_PORT=6379
+      - REDIS_HOST=nikita-redis
