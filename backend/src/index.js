@@ -16,7 +16,7 @@ const redis = Redis.createClient({
 });
 const PORT = process.env.PORT;
 
-redis.set('test', 'redis HELLO');
+redis.set('test', 'redis HELLO 22:25');
 
 server
   .use(logger('tiny'))
